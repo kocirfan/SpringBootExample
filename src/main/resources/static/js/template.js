@@ -1,0 +1,1 @@
+alert("Merhaba bu mesaj JS dosyasından ");
