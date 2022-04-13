@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class ThymeleafController {
 
     //http://localhost:8080
     @GetMapping({"/", "index"})
-    public String index(){
+    public String index() {
         return "index";
     }
 
@@ -57,11 +58,11 @@ public class ThymeleafController {
     public String getThymeleaf5Model(Model model) {
         model.addAttribute("key_model6", "object");
 
-        ProductDto productDto= ProductDto
+        ProductDto productDto = ProductDto
                 .builder()
-                    .productId(1L)
-                    .productName("Süper Product")
-                    .productPrice(15)
+                .productId(1L)
+                .productName("Süper Product")
+                .productPrice(15)
                 .build();
         model.addAttribute("key_model7", productDto);
 
@@ -91,16 +92,33 @@ public class ThymeleafController {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //Path Veriable
+    //@Path Veriable ==> name, required
 
+    //http://localhost:8080/thymeleaf7/
     //http://localhost:8080/thymeleaf7/4
-    @GetMapping({"/thymeleaf7","/thymeleaf7/{id}"})
+    @GetMapping({"/thymeleaf7", "/thymeleaf7/{id}"})
     public String getThymeleaf7Model(Model model, @PathVariable(name = "id", required = false) Long id) {
-        if(id!=null){
-            model.addAttribute("key_model9", "id: " +id);
-        }else{
+        if (id != null) {
+            model.addAttribute("key_model9", "id: " + id);
+        } else {
             model.addAttribute("key_model10", "id bulunamadı ");
         }
-    return "thymeleaf7";
+        return "thymeleaf7";
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //@RequestParam ==> ?
+
+    //http://localhost:8080/thymeleaf8?id=4&name=Kocirfan
+    @GetMapping("/thymeleaf8")
+    public String getThymeleaf8Model(Model model, @RequestParam(name = "id", required = false, defaultValue = "0") Long id, @RequestParam(name = "name") String adi) {
+        if (id != null) {
+            model.addAttribute("key_model11", "id: " + id + "adi soyadi: " + adi);
+        } else if (id == 0) {
+            model.addAttribute("key_model12", "default id ");
+        } else {
+            model.addAttribute("key_model12", "id bulunamadı ");
+        }
+        return "thymeleaf8";
     }
 }
