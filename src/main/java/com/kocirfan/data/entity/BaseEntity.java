@@ -1,4 +1,4 @@
-package com.kocirfan.entity;
+package com.kocirfan.data.entity;
 
 import lombok.Getter;
 import lombok.Setter;

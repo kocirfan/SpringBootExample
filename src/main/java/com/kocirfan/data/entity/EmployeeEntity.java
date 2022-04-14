@@ -1,4 +1,4 @@
-package com.kocirfan.entity;
+package com.kocirfan.data.entity;
 
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class EmployeeEntity extends BaseEntity implements Serializable {
 
 
     @Column(name = "first_name")
-    private String firsName;
+    private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
@@ -29,8 +29,8 @@ public class EmployeeEntity extends BaseEntity implements Serializable {
     @Column(name = "email_name")
     private String emailId;
 
-    public EmployeeEntity(String firsName, String lastName, String emailId) {
-        this.firsName = firsName;
+    public EmployeeEntity(String firstName, String lastName, String emailId) {
+        this.firstName = firstName;
         this.lastName = lastName;
         this.emailId = emailId;
     }

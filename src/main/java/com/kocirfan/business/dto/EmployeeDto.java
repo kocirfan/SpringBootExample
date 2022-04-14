@@ -1,4 +1,4 @@
-package com.kocirfan.dto;
+package com.kocirfan.business.dto;
 //DTO: Data Transfer Object ==> Middleware kısmında kullanılacak
 
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j2;
 public class EmployeeDto {
 
     private Long id;
-    private String firsName;
+    private String firstName;
     private String lastName;
     private String emailId;
 }
